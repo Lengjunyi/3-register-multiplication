@@ -37,7 +37,8 @@
 #define HALT { PRINT; return 0; }
 
 int main() {
-  long long R0 = 0, R1 = 6, R2 = 7;
+  long long R0 = 0, R1, R2;
+  scanf("%lld %lld", &R1, &R2);
 
   /* Step 1: Remove factors of 2 from R1 
     Example: (6, 7) -> (3, 14) */
