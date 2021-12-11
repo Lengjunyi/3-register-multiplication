@@ -75,5 +75,37 @@ int main() {
   L19: ADD(R0, L20)
   L20: ADD(R0, L18)
 
-  L21: HALT
+
+  /* Step 3: "Pop" R0 back into R2, retain
+  it in the form of 2 ^ n
+    Example: (3 * 2 ^ 14) -> (3, 2 ^ 14) */
+
+  L21: ADD(R2, L22) // Multiplicative identity
+
+  // Dividing from R0
+  L22: SUB(R0, L23, L24)
+  L23: ADD(R1, L22)
+  L24: SUB(R1, L25, L27)
+  L25: SUB(R1, L26, L32)
+  L26: ADD(R0, L24)
+
+  // Multiplying into R1
+  L27: SUB(R2, L28, L29)
+  L28: ADD(R1, L27)
+  L29: SUB(R1, L30, L22)
+  L30: ADD(R2, L31)
+  L31: ADD(R2, L29)
+
+  // Restoring R0
+  L32: SUB(R0, L33, L35)
+  L33: ADD(R1, L32)
+  L35: SUB(R1, L36, L38)
+  L36: ADD(R0, L37)
+  L37: ADD(R0, L35)
+  L38: ADD(R0, L39) // The "1" from "2n+1"
+
+  /* Could reduce L38 by reordering the next part (i think),
+  but it's put here for better understanding. */
+
+  L39: HALT
 }
