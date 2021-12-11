@@ -37,7 +37,7 @@
 #define HALT { PRINT; return 0; }
 
 int main() {
-  int R0 = 0, R1 = 4, R2 = 3;
+  long long R0 = 0, R1 = 6, R2 = 7;
 
   /* Step 1: Remove factors of 2 from R1 
     Example: (6, 7) -> (3, 14) */
