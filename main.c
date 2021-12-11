@@ -144,46 +144,78 @@ int main() {
   
   */
 
-  // L0
+  // L0: SUB(R1, L1, L6)
   L46: SUB(R2, L47, L49) // Success, then just move back to R2
-  L47: SUB(R2, L48, L53) // Otherwise, failure and need to restore
+  L47: SUB(R2, L48, L51) // Otherwise, failure and need to restore
   L48: ADD(R1, L46)
 
-  L49: SUB(R1, L50, END)
+  L49: SUB(R1, L50, L55)
   L50: ADD(R2, L49)
 
-  L51: SUB(R1, L52, END)
-  L52: ADD(R2, L53)
-  L53: ADD(R2, L51)
+  L51: ADD(R2, L52)
+  L52: SUB(R1, L53, L100)
+  L53: ADD(R2, L54)
+  L54: ADD(R2, L52)
 
-  // L1
-  L54: SUB(R2, L55, L58)
-  L55: SUB(R2, L56, L63)
+  // L1: SUB(R2, L2, L4)
+  L55: SUB(R2, L56, L59)
   L56: SUB(R2, L57, L62)
-  L57: ADD(R1, L54)
+  L57: SUB(R2, L58, L61)
+  L58: ADD(R1, L55)
 
-  L58: SUB(R1, L58, END)
-  L59: ADD(R2, L57)
+  L59: SUB(R1, L60, L67)
+  L60: ADD(R2, L59)
 
-  L60: SUB(R1, L61, END)
   L61: ADD(R2, L62)
   L62: ADD(R2, L63)
-  L63: ADD(R2, L60)
+  L63: SUB(R1, L64, L76)
+  L64: ADD(R2, L65)
+  L65: ADD(R2, L66)
+  L66: ADD(R2, L63)
 
-  // L2
-  L64: ADD(R0, END) // R0 not protected, no need of stack logic
+  // L2: ADD(R0, L3)
+  L67: ADD(R0, L68) // R0 not protected, no need of stack logic
 
-  // L3
-  L65: SUB(R2, L66, L67)
-  L66: ADD(R2, L65)
-  L67: SUB(R1, L68, END)
-  L68: ADD(R2, L69)
-  L69: ADD(R2, L70)
-  L70: ADD(R2, L71)
+  // L3: ADD(R3, L1)
+  L68: SUB(R2, L69, L70)
+  L69: ADD(R1, L68)
+  L70: SUB(R1, L71, L55)
   L71: ADD(R2, L72)
-  L72: ADD(R2, L67)
-  
+  L72: ADD(R2, L73)
+  L73: ADD(R2, L74)
+  L74: ADD(R2, L75)
+  L75: ADD(R2, L76)
 
+  // L4: SUB(R3, L5, L0)
+  L76: SUB(R2, L77, L82)
+  L77: SUB(R2, L78, L87)
+  L78: SUB(R2, L79, L86)
+  L79: SUB(R2, L80, L85)
+  L80: SUB(R2, L81, L84)
+  L81: ADD(R1, L76)
 
-  END: HALT
+  L82: SUB(R1, L83, L94)
+  L83: ADD(R2, L82)
+
+  L84: ADD(R2, L85)
+  L85: ADD(R2, L86)
+  L86: ADD(R2, L87)
+  L87: ADD(R2, L88)
+  L88: SUB(R1, L89, L46)
+  L89: ADD(R2, L90)
+  L90: ADD(R2, L91)
+  L91: ADD(R2, L92)
+  L92: ADD(R2, L93)
+  L93: ADD(R2, L88)
+
+  // L5: ADD(R2, L4)
+  L94: SUB(R2, L95, L96)
+  L95: ADD(R1, L94)
+  L96: SUB(R1, L97, L76)
+  L97: ADD(R2, L98)
+  L98: ADD(R2, L99)
+  L99: ADD(R2, L96)
+
+  // L6: HALT
+  L100: HALT
 }
