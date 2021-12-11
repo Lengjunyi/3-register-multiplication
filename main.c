@@ -22,7 +22,7 @@
   }                       \
 }
 
-#define PRINT printf("[%i, %i, %i]\n", R0, R1, R2)
+#define PRINT printf("[%lld, %lld, %lld]\n", R0, R1, R2)
 
 #define ADD(p, a) {                                                                            \
   PRINT;                                                                     \
@@ -184,7 +184,7 @@ int main() {
   L72: ADD(R2, L73)
   L73: ADD(R2, L74)
   L74: ADD(R2, L75)
-  L75: ADD(R2, L76)
+  L75: ADD(R2, L70)
 
   // L4: SUB(R3, L5, L0)
   L76: SUB(R2, L77, L82)
