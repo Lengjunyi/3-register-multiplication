@@ -121,6 +121,27 @@ int main() {
   /* After this step, the transforming task is done and we
   can now use R1 and R2 to simulate three registers. */
 
+
+  /* Step 5: The real work.
+
+  The original register machine program to perform this job is:
+
+    L0: SUB(R1, L1, L6)
+    L1: SUB(R2, L2, L4)
+    L2: ADD(R0, L3)
+    L3: ADD(R3, L1)
+    L4: SUB(R3, L5, L0)
+    L5: ADD(R2, L4)
+    L6: HALT
+
+    We have used powers of 2 and powers of 3 to represent R1 and R2,
+    thus we now use powers of 5 to represent R3.
+
+    Now, the adding operations are simulated with multiplication,
+    and the subtracting operations are simulated with division.
   
+  */
+
+  // L0
   L46: HALT
 }
