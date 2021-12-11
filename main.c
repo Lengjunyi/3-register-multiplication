@@ -37,7 +37,7 @@
 #define HALT { PRINT; return 0; }
 
 int main() {
-  int R0 = 0, R1 = 6, R2 = 7;
+  int R0 = 0, R1 = 4, R2 = 3;
 
   /* Step 1: Remove factors of 2 from R1 
     Example: (6, 7) -> (3, 14) */
@@ -139,9 +139,51 @@ int main() {
 
     Now, the adding operations are simulated with multiplication,
     and the subtracting operations are simulated with division.
+
+    From now on, It's better to test with smaller numbers like 4 * 3
   
   */
 
   // L0
-  L46: HALT
+  L46: SUB(R2, L47, L49) // Success, then just move back to R2
+  L47: SUB(R2, L48, L53) // Otherwise, failure and need to restore
+  L48: ADD(R1, L46)
+
+  L49: SUB(R1, L50, END)
+  L50: ADD(R2, L49)
+
+  L51: SUB(R1, L52, END)
+  L52: ADD(R2, L53)
+  L53: ADD(R2, L51)
+
+  // L1
+  L54: SUB(R2, L55, L58)
+  L55: SUB(R2, L56, L63)
+  L56: SUB(R2, L57, L62)
+  L57: ADD(R1, L54)
+
+  L58: SUB(R1, L58, END)
+  L59: ADD(R2, L57)
+
+  L60: SUB(R1, L61, END)
+  L61: ADD(R2, L62)
+  L62: ADD(R2, L63)
+  L63: ADD(R2, L60)
+
+  // L2
+  L64: ADD(R0, END) // R0 not protected, no need of stack logic
+
+  // L3
+  L65: SUB(R2, L66, L67)
+  L66: ADD(R2, L65)
+  L67: SUB(R1, L68, END)
+  L68: ADD(R2, L69)
+  L69: ADD(R2, L70)
+  L70: ADD(R2, L71)
+  L71: ADD(R2, L72)
+  L72: ADD(R2, L67)
+  
+
+
+  END: HALT
 }
