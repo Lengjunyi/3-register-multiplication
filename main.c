@@ -107,5 +107,20 @@ int main() {
   /* Could reduce L38 by reordering the next part (i think),
   but it's put here for better understanding. */
 
-  L39: HALT
+
+  /* Step 4: "Push" R0 into R2, as power of 3.
+    Example: (3, 2 ^ 14) -> (0, 2 ^ 14 * 3 ^ 3) */
+  L39: SUB(R0, L40, L46)
+  L40: SUB(R2, L41, L42)
+  L41: ADD(R1, L40)
+  L42: SUB(R1, L43, L39)
+  L43: ADD(R2, L44)
+  L44: ADD(R2, L45)
+  L45: ADD(R2, L42)
+
+  /* After this step, the transforming task is done and we
+  can now use R1 and R2 to simulate three registers. */
+
+  
+  L46: HALT
 }
